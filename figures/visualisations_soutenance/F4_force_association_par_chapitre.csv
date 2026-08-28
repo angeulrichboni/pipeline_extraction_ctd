@@ -1,0 +1,19 @@
+Chapitre,Échelle,pollutant,association_strength
+Grossesse et puerpéralité,Annuelle (chronique),PM25,1.0
+Grossesse et puerpéralité,Journalière (aiguë),PM25,1.0
+Période périnatale,Annuelle (chronique),PM10,1.0
+Période périnatale,Annuelle (chronique),PM25,0.63545908
+Période périnatale,Journalière (aiguë),PM10,1.0
+Période périnatale,Journalière (aiguë),PM25,0.09971558
+Système circulatoire,Annuelle (chronique),PM10,0.5730769
+Système circulatoire,Annuelle (chronique),PM25,0.57205572
+Système circulatoire,Journalière (aiguë),PM10,0.16972478
+Système circulatoire,Journalière (aiguë),PM25,0.73282208
+Système nerveux,Annuelle (chronique),PM10,0.21342815
+Système nerveux,Annuelle (chronique),PM25,1.0
+Système nerveux,Journalière (aiguë),PM10,0.42267155
+Système nerveux,Journalière (aiguë),PM25,0.1083977
+Système respiratoire,Annuelle (chronique),PM10,0.94170879
+Système respiratoire,Annuelle (chronique),PM25,1.0
+Système respiratoire,Journalière (aiguë),PM10,0.83447758
+Système respiratoire,Journalière (aiguë),PM25,0.94221895

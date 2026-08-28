@@ -1,0 +1,2 @@
+year,individual_1,persona_1,mean_1,sd_1,max_consecutive_1,individual_2,persona_2,mean_2,sd_2,max_consecutive_2,relative_mean_difference,trajectory_rmse,consecutive_difference,variability_difference,consecutive_rank,trajectory_rank,variability_rank,scientific_contrast_score
+2022,P2_06,P2,1050.3996123945205,1049.1138200323019,45,P4_06,P4,1047.4073419616439,275.0867680702531,116,0.002852760523710866,0.12986200109488907,71,774.0270519620487,0.9591836734693877,1.0,1.0,0.9816326530612246

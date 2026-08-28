@@ -1,0 +1,4 @@
+pollutant_mention,outcome_mention,measure_type,effect_value,ci_lower,ci_upper,evidence_sentence
+"PM10","respiratory causes","OR","1.16","1.06","1.27","After adjustment for demographic and other factors and for other pollutants, we found adjusted…"
+"O3","sudden infant death syndrome","OR","1.20","1.09","1.32","After adjustment for demographic and other factors and for other pollutants, we found adjusted…"
+"Ozone","sudden infant death syndrome","OR","1.20","1.09","1.32","adjusted odds ratios of 1.20 (95% CI, 1.09-1.32) for a 10-ppb increase in ozone and deaths from SIDS"

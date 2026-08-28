@@ -1,0 +1,4 @@
+pollutant_mention,outcome_mention,measure_type,effect_value,ci_lower,ci_upper,evidence_sentence
+"PAHs","bronchitis","RR","1.29","1.07","1.54","Below 2 years of age, increments in 30-day averages of 100 ng/m(3) PAHs ... resulted in rate…"
+"PM2.5","bronchitis","RR","1.30","1.08","1.58","Below 2 years of age, increments in 30-day averages of ... 25 microg/m(3) PM(2.5) resulted in rate…"
+"PAHs","bronchitis","RR","1.56","1.22","2.00","From 2 to 4.5 years of age, increments in 30-day averages of 100 ng/m(3) PAHs resulted in rate…"

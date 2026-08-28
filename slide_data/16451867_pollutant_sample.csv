@@ -1,0 +1,4 @@
+pollutant_specific,pollutant_role,evidence_sentence,confidence
+"PM2.5","target","We observed no increased risk after acute exposure to particulate matter < or = 2.5 microm in…","1.0"
+"CO","contextual","We observed no increased risk after acute exposure to particulate matter < or = 2.5 microm in…","1.0"
+"ambient air pollution","source_marker","We found little support for a link between acute increases in ambient air pollution and infant…","1.0"

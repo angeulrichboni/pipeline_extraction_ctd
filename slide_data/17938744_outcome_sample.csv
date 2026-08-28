@@ -1,0 +1,4 @@
+outcome_core,outcome_category,outcome_role,evidence_sentence
+"bronchitis","health_outcome","primary_outcome","Our major finding is a clear demonstration that PAHs were associated with a greater incidence of…"
+"acute laryngitis","health_outcome","case_definition_component","The vast majority were acute laryngitis and tracheitis (ICD-10 code J04) and acute bronchitis (J20)."
+"croup","health_outcome","secondary_outcome","The overall rates for lower respiratory illness, bronchitis, and croup in children < 2 years of…"
