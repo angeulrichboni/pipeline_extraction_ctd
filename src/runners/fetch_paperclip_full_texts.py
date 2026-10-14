@@ -152,7 +152,7 @@ def main() -> None:
         "--workers",
         type=int,
         default=1,
-        help="Nombre de PMIDs traites en parallele (1 = sequentiel, comme avant).",
+        help="Nombre de PMIDs traites en parallele (1 = sequentiel).",
     )
 
     args = parser.parse_args()

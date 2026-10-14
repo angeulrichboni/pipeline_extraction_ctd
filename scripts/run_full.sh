@@ -5,7 +5,10 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-export CTD_DATA_ROOT="${CTD_DATA_ROOT:-data/processed}"
+if [[ -z "${CTD_DATA_ROOT:-}" ]]; then
+  CTD_DATA_ROOT="$(python -c 'from src.config.paths import paths; print(paths.processed_dir)')"
+fi
+export CTD_DATA_ROOT
 WORKERS="${WORKERS:-4}"
 ICD_OUTPUT_DIR="$CTD_DATA_ROOT/icd"
 

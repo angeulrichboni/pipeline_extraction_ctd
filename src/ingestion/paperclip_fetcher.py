@@ -28,6 +28,7 @@ DEFAULT_TIMEOUT_SECONDS = 120
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_SLEEP_SECONDS = 1.0
 DEFAULT_PAPERCLIP_COMMAND = "paperclip"
+DEFAULT_PAPERCLIP_PATH_TEMPLATE = "/papers/{pmc_id}/content.lines"
 
 # Important quality guard:
 # Very short "full texts" are usually empty pages, service messages,
@@ -394,8 +395,30 @@ def build_headers(api_key: str = "") -> dict[str, str]:
     return headers
 
 
+def resolve_paperclip_path_template() -> str:
+    return (
+        safe_str(getattr(settings, "paperclip_full_text_path_template", ""))
+        or safe_str(os.getenv("PAPERCLIP_FULL_TEXT_PATH_TEMPLATE"))
+        or DEFAULT_PAPERCLIP_PATH_TEMPLATE
+    )
+
+
+def paperclip_content_path(pmc_id: str) -> str:
+    template = resolve_paperclip_path_template()
+
+    try:
+        path = template.format(pmc_id=pmc_id)
+    except (KeyError, ValueError) as exc:
+        raise ValueError(
+            "Invalid PAPERCLIP_FULL_TEXT_PATH_TEMPLATE: "
+            f"{template!r}. Expected a '{{pmc_id}}' placeholder."
+        ) from exc
+
+    return "/" + path.lstrip("/")
+
+
 def paperclip_content_url(base_url: str, pmc_id: str) -> str:
-    return f"{base_url}/papers/{pmc_id}/content.lines"
+    return f"{base_url.rstrip('/')}{paperclip_content_path(pmc_id)}"
 
 
 def is_retryable_status(status_code: int) -> bool:
@@ -484,6 +507,8 @@ fetch_paperclip_content_lines = fetch_paperclip_content_lines_http
 def resolve_paperclip_command(command: str | None = None) -> str:
     return (
         safe_str(command)
+        or safe_str(getattr(settings, "paperclip_binary", ""))
+        or safe_str(os.getenv("PAPERCLIP_BINARY"))
         or safe_str(getattr(settings, "paperclip_command", ""))
         or safe_str(os.getenv("PAPERCLIP_COMMAND"))
         or DEFAULT_PAPERCLIP_COMMAND
@@ -495,7 +520,7 @@ def is_paperclip_cli_available(command: str = DEFAULT_PAPERCLIP_COMMAND) -> bool
 
 
 def paperclip_cli_path(pmc_id: str) -> str:
-    return f"/papers/{pmc_id}/content.lines"
+    return paperclip_content_path(pmc_id)
 
 
 def fetch_paperclip_content_lines_cli(

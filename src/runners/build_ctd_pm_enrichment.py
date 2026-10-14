@@ -23,10 +23,9 @@ CTD_DISEASES_PATH = CTD_PM_HUMAN_DIR / "diseases_pm.csv"
 CTD_IXNS_PATH = CTD_PM_HUMAN_DIR / "ixns_human.csv"
 CTD_PHENOTYPE_PATH = CTD_PM_HUMAN_DIR / "phenotype_human.csv"
 
-# Table de reference globale CTD (tous chemicals confondus, pas de filtre
-# possible ici) : utilisee uniquement pour recuperer les compteurs
+# Table de reference globale CTD utilisee pour recuperer les compteurs
 # d'interactions/organismes globaux par gene.
-CTD_GENES_PATH = Path("data/raw/CTD_D052638_genes_20260609050446.csv")
+CTD_GENES_PATTERN = "CTD_D052638_genes*.csv"
 
 OUTPUT_DIR = DATA_ROOT / "enrichment"
 
@@ -102,6 +101,17 @@ def read_csv(path: Path) -> pd.DataFrame:
         raise FileNotFoundError(path)
 
     return pd.read_csv(path, low_memory=False)
+
+
+def resolve_ctd_genes_path(raw_dir: Path = Path("data/raw")) -> Path:
+    matches = sorted(raw_dir.glob(CTD_GENES_PATTERN))
+
+    if not matches:
+        raise FileNotFoundError(
+            f"Aucun fichier ne correspond a {CTD_GENES_PATTERN!r} dans {raw_dir}."
+        )
+
+    return matches[-1]
 
 
 def split_pipe_values(value: Any) -> list[str]:
@@ -1670,7 +1680,7 @@ def main() -> None:
     main_df["is_pm_d052638_candidate"] = main_df.apply(is_pm_like, axis=1)
 
     diseases_df = read_csv(CTD_DISEASES_PATH)
-    genes_df = read_csv(CTD_GENES_PATH)
+    genes_df = read_csv(resolve_ctd_genes_path())
     ixns_df = read_csv(CTD_IXNS_PATH)
     phenotype_df = read_csv(CTD_PHENOTYPE_PATH)
 

@@ -6,6 +6,8 @@ import os
 from dataclasses import dataclass
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 
 @dataclass(frozen=True)
 class ProjectPaths:
@@ -129,8 +131,12 @@ def find_project_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+PROJECT_ROOT = find_project_root()
+load_dotenv(PROJECT_ROOT / ".env")
+
+
 def build_paths() -> ProjectPaths:
-    project_root = find_project_root()
+    project_root = PROJECT_ROOT
 
     data_dir = project_root / "data"
     raw_dir = data_dir / "raw"
