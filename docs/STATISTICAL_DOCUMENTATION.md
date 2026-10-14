@@ -1,6 +1,6 @@
-# Documentation exhaustive de la nouvelle pipeline
+# Rapport statistique du pipeline
 
-Document généré à partir des artefacts actuels du répertoire `data/processed` après introduction de la nouvelle logique d’enrichissement gène outcome-specific. Les chiffres proviennent des CSV/JSON produits par la pipeline ; aucune valeur n’est estimée lorsqu’un artefact ne la contient pas.
+Ce rapport décrit les artefacts de l’exécution de référence présents dans `data/processed`. Les chiffres proviennent des CSV et JSON produits par le pipeline ; aucune valeur n’est estimée lorsqu’un artefact ne la contient pas.
 
 ## 1. Executive Summary
 
@@ -31,7 +31,7 @@ Les extractions canoniques sont : **2 306 polluants**, **2 125 outcomes**, **3 4
 - Associations candidates : **3 003** ; associations finales : **1 875 / 3 003 (62.4 %)**.
 - Enrichissement outcome-specific : **13 502 liens association-gène**, couvrant **339 associations PM**.
 
-## 2. Architecture générale de la nouvelle logique
+## 2. Architecture générale
 
 La séquence réellement utilisée par les artefacts actuels est :
 
@@ -611,7 +611,7 @@ Complétude des champs importants dans `ctd_extraction_final.csv` :
 
 ## 13. Enrichissement
 
-L’enrichissement CTD actuel est PM-only pour la couche mécanistique. Les **296 associations non-PM** restent dans le fichier enrichi, mais ne reçoivent pas de mécanisme CTD inventé. La nouvelle logique distingue deux niveaux : `PM-level context` et `outcome-specific`.
+L’enrichissement CTD est limité aux PM pour la couche mécanistique. Les **296 associations non-PM** restent dans le fichier enrichi, mais ne reçoivent pas de mécanisme CTD inventé. La méthode distingue deux niveaux : `PM-level context` et `outcome-specific`.
 
 ### Disease et phenotype
 Sur **421 outcome keys PM**, **76 / 421 (18.1 %)** ont un mapping disease accepté et **36 / 421 (8.6 %)** ont un mapping phenotype accepté.
@@ -620,7 +620,7 @@ Sur **421 outcome keys PM**, **76 / 421 (18.1 %)** ont un mapping disease accept
 L’enrichissement contextuel PM-level est disponible dans `association_pm_gene_links_top.csv` : **315 800 liens**, soit **1 579 associations PM × 200 top gènes PM humains**. Ce fichier est explicitement noté comme contexte PM général, non outcome-specific.
 
 ### Gènes outcome-specific
-Le nouveau fichier `association_pm_gene_links_outcome_specific.csv` contient **13 502 liens association-gène**, couvrant **339 / 1 579 associations PM (21.5 %)** et **1 070 gènes uniques**. La règle est : gène présent dans le `Inference Network` CTD du disease/phenotype mappé à l’outcome, et aussi présent dans les gènes PM-humains CTD.
+Le fichier `association_pm_gene_links_outcome_specific.csv` contient **13 502 liens association-gène**, couvrant **339 / 1 579 associations PM (21.5 %)** et **1 070 gènes uniques**. La règle est : gène présent dans le `Inference Network` CTD du disease/phenotype mappé à l’outcome, et aussi présent dans les gènes PM-humains CTD.
 
 Distribution des liens outcome-specific :
 | Rang | Type mapping CTD | Liens | Documents | % |
@@ -824,7 +824,7 @@ Polluant × significativité :
 | Agents | `src/agents/*_extractor.py` | documents segmentés | JSON agents | LLM température 0, repair JSON |
 | Association builder | `src/builders/association_builder.py` | sorties agents | associations JSON/CSV | déterministe |
 | Quality control | `src/quality_control/final_cleaner.py` | associations_all | clean/rejected/audit | règles déterministes |
-| Enrichissement CTD | `src/runners/build_ctd_pm_enrichment.py` | tables finales + CTD | enrichment CSV | nouvelle logique outcome-specific |
+| Enrichissement CTD | `src/runners/build_ctd_pm_enrichment.py` | tables finales + CTD | enrichment CSV | liens outcome-specific |
 | Fusion finale | `src/preprocessing/final_dataset_merge.py` | main enriched + population + time | `final/ctd_extraction_final.csv` | jointures m:1 |
 
 ## 21. Échecs et cas limites
@@ -860,7 +860,7 @@ Métriques disponibles : réparations JSON agents : pollutant **5**, outcome **4
 - 1 579 associations finales sont PM/D052638 et éligibles à l’enrichissement mécanistique CTD.
 - 76 / 421 outcomes PM uniques matchent une disease CTD acceptée.
 - 36 / 421 outcomes PM uniques matchent un phenotype CTD accepté.
-- La nouvelle logique produit 13 502 liens association-gène outcome-specific couvrant 339 associations PM.
+- L’enrichissement outcome-specific produit 13 502 liens association-gène couvrant 339 associations PM.
 
 ## 25. Statistiques directement réutilisables dans les slides
 ### Slide — Acquisition des données
@@ -932,7 +932,7 @@ Métriques disponibles : réparations JSON agents : pollutant **5**, outcome **4
 
 ## 27. Conclusion générale
 
-La nouvelle pipeline transforme un corpus CTD PM de **434 PMIDs candidats** en un dataset final consolidé de **1 875 relations exposition-santé quantifiées**. Elle combine récupération documentaire, agents LLM spécialisés, association builder déterministe, contrôle qualité strict et enrichissement CTD. La couverture documentaire est forte pour les abstracts (**431 / 432**) et partielle mais substantielle pour les full texts (**292 / 432**). Le QC réduit **3 003 associations candidates** à **1 875 associations finales** utilisables en analyse principale. La contribution méthodologique récente est la séparation entre enrichissement gène PM-level et enrichissement gène outcome-specific : le premier fournit un contexte général, le second produit **13 502 liens plus défendables** via les réseaux CTD disease/phenotype correspondant aux outcomes extraits.
+Le pipeline transforme un corpus CTD PM de **434 PMIDs candidats** en un dataset final consolidé de **1 875 relations exposition-santé quantifiées**. Il combine récupération documentaire, agents LLM spécialisés, association builder déterministe, contrôle qualité strict et enrichissement CTD. La couverture documentaire est forte pour les abstracts (**431 / 432**) et partielle mais substantielle pour les full texts (**292 / 432**). Le QC réduit **3 003 associations candidates** à **1 875 associations finales** utilisables en analyse principale. L’enrichissement sépare les gènes PM-level des liens gène outcome-specific : le premier niveau fournit un contexte général, le second produit **13 502 liens plus défendables** via les réseaux CTD disease/phenotype correspondant aux outcomes extraits.
 
 Limites principales : deux PMIDs PM candidats ne sont pas dans les artefacts traités ; les métriques de temps, tokens et coûts ne sont pas consolidées ; la taille d’échantillon des études n’est pas structurée ; les mappings CTD restent dépendants de la qualité de normalisation des outcomes.
 
@@ -946,7 +946,7 @@ Limites principales : deux PMIDs PM candidats ne sont pas dans les artefacts tra
 7. 1 579 associations finales sont PM/D052638 et éligibles à l’enrichissement mécanistique CTD.
 8. 76 / 421 outcomes PM uniques matchent une disease CTD acceptée.
 9. 36 / 421 outcomes PM uniques matchent un phenotype CTD accepté.
-10. La nouvelle logique produit 13 502 liens association-gène outcome-specific couvrant 339 associations PM.
+10. L’enrichissement outcome-specific produit 13 502 liens association-gène couvrant 339 associations PM.
 11. Le terme “association” signifie ici une relation exposition-santé quantifiée, pas une preuve causale directe.
 12. Les gènes outcome-specific ne sont ajoutés que lorsque l’outcome extrait matche une disease ou un phenotype CTD accepté.
 

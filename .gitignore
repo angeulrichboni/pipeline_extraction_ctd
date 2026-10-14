@@ -1,13 +1,19 @@
 # Environment and secrets
-.env
-.env.*
-!.env.example
+/.env
+/.env.*
+!/.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
 
 # Python virtual environments
-.venv/
-venv/
-env/
-ENV/
+/.venv/
+/venv/
+/env/
+/ENV/
 
 # Python cache/build artifacts
 __pycache__/
@@ -16,7 +22,12 @@ __pycache__/
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
+.tox/
+.nox/
+.hypothesis/
 .coverage
+.coverage.*
+coverage.xml
 htmlcov/
 build/
 dist/
@@ -32,24 +43,48 @@ pip-wheel-metadata/
 Thumbs.db
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 
-# Local agent/tooling state
-.codex/
-.agents/
+# Local agent/tooling state and caches
+/.codex/
+/.agents/
+.cache/
 
 # Logs and temporary files
 *.log
 *.tmp
 *.bak
+*.pid
+*.sqlite
+*.sqlite3
 
-# Generated datasets
+# Raw inputs, fetched publications, LLM responses and generated datasets
 /data/
 
-# Local input extracts; keep canonical small references under config/ or mapping/
-ctd_extraction.csv
+# Local input extracts; keep canonical references under config/
+/ctd_extraction.csv
 
-# Generated analyses and reports
-figures/
-resultats_*/
-slide_data/
+# Generated analyses, experiments and reports
+/outputs/
+/results/
+/resultats_*/
+/artifacts/
+/figures/
+/illustration/
+/slide_data/
+/chunk_size_comparison_results.json
+
+# Generated images at repository root
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+
+# Archives
 *.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z

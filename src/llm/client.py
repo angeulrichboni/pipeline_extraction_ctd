@@ -50,7 +50,7 @@ class ILAASClient:
         self.max_retries = (
             max_retries
             if max_retries is not None
-            else getattr(settings, "retry_max_attempts", 3)
+            else getattr(settings, "max_retries", 3)
         )
 
         self.retry_sleep_seconds = (

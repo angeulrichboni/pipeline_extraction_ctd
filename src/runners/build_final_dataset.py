@@ -1,8 +1,4 @@
-"""
-CLI runner : fusion finale. Derniere etape du pipeline (voir README section
-4.15). Remplace la fusion manuelle faite jusqu'ici dans fusion_data.ipynb par
-un runner testable et rejouable.
-"""
+"""Construit le dataset final à partir des enrichissements et sorties agents."""
 
 from __future__ import annotations
 
