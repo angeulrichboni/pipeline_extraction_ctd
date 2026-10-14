@@ -1,5 +1,5 @@
 """
-Lanceur du pipeline complet (Phase 1).
+Lanceur du pipeline complet d'extraction CTD.
 
 Enchaine les runners existants dans l'ordre documente dans le README, en
 appelant chacun comme un sous-processus independant (`python -m src.runners.X`).
@@ -73,13 +73,13 @@ STAGES: list[Stage] = [
           "Construction des tables finales."),
     Stage("ctd_enrichment", "src.runners.build_ctd_pm_enrichment",
           "Enrichissement CTD (genes, maladies, phenotypes) sur PM."),
-    Stage("agent_csv_exports", "src.runners.export_agent_csv_outputs",
-          "Export CSV individuel de chaque agent (pollutant/outcome/effect/"
-          "association/population/temporal)."),
     Stage("population_location", "src.runners.run_population_extractor",
           "Agent d'extraction population/localisation."),
     Stage("exposure_temporal", "src.runners.run_time_extractor",
           "Agent d'extraction de la temporalite d'exposition."),
+    Stage("agent_csv_exports", "src.runners.export_agent_csv_outputs",
+          "Export CSV individuel de chaque agent (pollutant/outcome/effect/"
+          "association/population/temporal)."),
     Stage("final_dataset", "src.runners.build_final_dataset",
           "Fusion finale : enrichissement CTD + population/localisation + temporalite."),
 ]
@@ -91,8 +91,8 @@ STAGE_GROUPS = {
     "agents": ["pollutant", "outcome", "effect_measure", "association_builder"],
     "postprocessing": [
         "merge", "quality_control", "inspect", "final_tables",
-        "ctd_enrichment", "agent_csv_exports", "population_location",
-        "exposure_temporal", "final_dataset",
+        "ctd_enrichment", "population_location", "exposure_temporal",
+        "agent_csv_exports", "final_dataset",
     ],
 }
 
@@ -131,7 +131,7 @@ def build_command(stage: Stage, args: argparse.Namespace) -> list[str]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Lance le pipeline d'extraction (Phase 1) de bout en bout."
+        description="Lance le pipeline d'extraction CTD de bout en bout."
     )
     parser.add_argument(
         "--stages", default="all",

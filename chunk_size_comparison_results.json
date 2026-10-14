@@ -1,0 +1,61 @@
+[
+  {
+    "pmid": "30073950",
+    "chunk_size": 8000,
+    "overlap": 500,
+    "n_chunks": 9,
+    "n_chunks_failed": 0,
+    "n_pollutants_unique": 10,
+    "pollutants": [
+      "EC",
+      "NO2",
+      "PAHs",
+      "PM2.5",
+      "TRAP",
+      "air pollution",
+      "black carbon",
+      "elemental carbon (EC)",
+      "polycyclic aromatic hydrocarbons (PAHs)",
+      "traffic-related pollution"
+    ]
+  },
+  {
+    "pmid": "30073950",
+    "chunk_size": 8000,
+    "overlap": 500,
+    "n_chunks": 9,
+    "n_chunks_failed": 0,
+    "n_pollutants_unique": 10,
+    "pollutants": [
+      "EC",
+      "NO2",
+      "PAHs",
+      "PM2.5",
+      "TRAP",
+      "air pollution",
+      "black carbon",
+      "elemental carbon (EC)",
+      "polycyclic aromatic hydrocarbons (PAHs)",
+      "traffic-related pollution"
+    ]
+  },
+  {
+    "pmid": "30073950",
+    "chunk_size": 8000,
+    "overlap": 500,
+    "n_chunks": 9,
+    "n_chunks_failed": 0,
+    "n_pollutants_unique": 9,
+    "pollutants": [
+      "EC",
+      "NO2",
+      "PAHs",
+      "PM2.5",
+      "TRAP",
+      "air pollution",
+      "elemental carbon (EC)",
+      "polycyclic aromatic hydrocarbons (PAHs)",
+      "traffic-related pollution"
+    ]
+  }
+]

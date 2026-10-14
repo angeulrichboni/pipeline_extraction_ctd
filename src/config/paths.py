@@ -29,6 +29,7 @@ class ProjectPaths:
     multi_pmid_output_dir: Path
     final_quality_control_dir: Path
     final_inspection_dir: Path
+    icd_output_dir: Path
 
     logs_dir: Path
 
@@ -47,6 +48,7 @@ class ProjectPaths:
             self.multi_pmid_output_dir,
             self.final_quality_control_dir,
             self.final_inspection_dir,
+            self.icd_output_dir,
             self.logs_dir,
         ]
 
@@ -153,6 +155,7 @@ def build_paths() -> ProjectPaths:
     multi_pmid_output_dir = agent_outputs_dir / "multi_pmid_runner"
     final_quality_control_dir = agent_outputs_dir / "final_quality_control"
     final_inspection_dir = agent_outputs_dir / "final_inspection"
+    icd_output_dir = processed_dir / "icd"
 
     logs_dir = processed_dir / "logs"
 
@@ -172,6 +175,7 @@ def build_paths() -> ProjectPaths:
         multi_pmid_output_dir=multi_pmid_output_dir,
         final_quality_control_dir=final_quality_control_dir,
         final_inspection_dir=final_inspection_dir,
+        icd_output_dir=icd_output_dir,
         logs_dir=logs_dir,
     )
 

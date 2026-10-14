@@ -1,19 +1,9 @@
-"""
-Aide partagee par pollutant_extractor, outcome_extractor et
-effect_measure_extractor : construit les chunks a envoyer au LLM et ecrit le
-raisonnement CoT dans un fichier separe.
+"""Prépare les segments documentaires transmis aux extracteurs LLM.
 
-Remplace l'ancienne approche (concatener tout le document puis le tronquer a
-N caracteres) par du Map-Reduce : chaque chunk deja produit par
-run_document_segmentation (payload["focus_chunks"]) est envoye separement au
-LLM (map), puis les resultats de tous les chunks du meme PMID sont fusionnes
-et deduplique cote appelant (reduce) -- exactement la meme fonction de
-deduplication qu'avant, juste appelee sur l'union des chunks au lieu d'un
-seul gros bloc de texte tronque.
-
-Aucune troncature : un document de n'importe quelle taille est integralement
-couvert, chunk par chunk. Chaque appel reste petit et borne, donc pas de
-risque de depasser la limite de tokens du modele.
+Chaque segment produit par ``run_document_segmentation`` est envoyé séparément
+au modèle. Les résultats d'un même PMID sont ensuite réunis et dédupliqués par
+l'extracteur appelant. Ce traitement couvre le document complet tout en gardant
+des requêtes bornées et des preuves textuelles rattachées à leur segment.
 """
 
 from __future__ import annotations

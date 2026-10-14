@@ -1,1 +1,0 @@
-Archivé — c'est l'audit manuel original (2026-07-21), antérieur au projet, jamais consommé par le code. Conservé tel quel comme trace historique de la curation initiale plutôt que réécrit, pour ne pas falsifier la date/méthode réelle de l'audit d'origine.

@@ -1,4 +1,0 @@
-pollutant_specific,pollutant_role,evidence_sentence,confidence
-"ambient air pollution","source_marker","Few studies of air pollutants address morbidity in preschool children. In this study we evaluated…","0.95"
-"PM2.5","target","Air monitoring for particulate matter < 2.5 microm in diameter (PM(2.5)) and polycyclic aromatic…","1.0"
-"polycyclic aromatic hydrocarbons (PAHs)","ambiguous","Air monitoring for particulate matter < 2.5 microm in diameter (PM(2.5)) and polycyclic aromatic…","0.99"

@@ -846,7 +846,7 @@ def normalize_paperclip_metadata(
 
     # -----------------------------------------------------------------
     # Rule 3:
-    # Legacy fallback only when there is no enriched Paperclip decision.
+    # Fallback used when no enriched Paperclip decision is available.
     # This allows the builder to work with older manifests.
     # -----------------------------------------------------------------
     embedded_full_text = first_value(

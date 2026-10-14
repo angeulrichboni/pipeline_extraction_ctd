@@ -1,4 +1,0 @@
-pollutant_mention,outcome_mention,measure_type,effect_value,ci_lower,ci_upper,evidence_sentence
-"PM2.5","bronchiolitis hospitalization","OR","1.26","1.01","1.57","Analyses stratified on categories of prematurity (25–29 weeks) suggested elevated risk... with a…"
-"PM2.5","wheezy bronchitis","percent_change","5","0","9","The authors estimated modestly increased risks related to PM2.5 exposure; for each 10-μg/m3…"
-"PM2.5","bronchiolitis hospitalization","OR","1.41","1.11","1.79","Analyses stratified on categories of prematurity (25–29 weeks) suggested... a 41% (1.11–1.79)…"

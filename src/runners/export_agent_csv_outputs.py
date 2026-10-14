@@ -10,7 +10,7 @@ from typing import Any
 import pandas as pd
 
 
-ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed_full"))
+ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed"))
 OUT_DIR = ROOT / "agent_csv_outputs"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 

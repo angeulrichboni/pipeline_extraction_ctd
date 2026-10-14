@@ -23,7 +23,7 @@ from src.llm.client import ILAASClient
 from src.agents.time_extractor import run_time_extractor_for_pmid
 from src.runners.parallel_utils import run_pmids
 
-DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed_full"))
+DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed"))
 DEFAULT_ASSOCIATIONS_PATH = DATA_ROOT / "enrichment" / "main_associations_enriched.csv"
 
 ASSOCIATION_COLUMNS = [

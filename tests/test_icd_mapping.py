@@ -10,8 +10,9 @@ SRC = ROOT / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
 
-from stage_bph.icd_mapping.engine import apply_mapping
-from stage_bph.icd_mapping.reference import load_reference, validate_reference
+from config.paths import paths
+from icd.engine import apply_mapping
+from icd.reference import load_reference, validate_reference
 
 
 REFERENCE = ROOT / "config" / "icd_mapping_reference.csv"
@@ -24,6 +25,9 @@ class CompleteMappingTests(unittest.TestCase):
 
     def test_reference_has_no_conflict(self) -> None:
         self.assertEqual(validate_reference(REFERENCE), [])
+
+    def test_icd_output_is_inside_processed_data(self) -> None:
+        self.assertEqual(paths.icd_output_dir, paths.processed_dir / "icd")
 
     def test_exact_code_mapping(self) -> None:
         row = {

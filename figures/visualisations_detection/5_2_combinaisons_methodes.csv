@@ -1,5 +1,0 @@
-mean_exceedance,max_exceedance,mil_exceedance,n_windows,percentage,state
-0,1,0,686,1.2522818546914933,Moyenne=Non | Maximum=Oui | MIL=Non
-1,1,1,4658,8.503103322380431,Moyenne=Oui | Maximum=Oui | MIL=Oui
-0,0,0,24706,45.100401606425706,Moyenne=Non | Maximum=Non | MIL=Non
-0,1,1,24730,45.14421321650237,Moyenne=Non | Maximum=Oui | MIL=Oui

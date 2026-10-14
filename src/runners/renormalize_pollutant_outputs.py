@@ -1,9 +1,9 @@
-"""
-CLI runner : corrige les sorties pollutant_extractor deja produites avec
-l'ancienne version buguee de compact() (ex. "PM(2.5)" jamais fusionne avec
-"PM2.5"). Aucun appel LLM : relit chaque fichier de sortie existant, repasse
-les items deja extraits dans normalize_pollutant_payload() (avec le fix), et
-reecrit le fichier avec les polluants correctement regroupes.
+"""Normalise à nouveau les fichiers du pollutant extractor.
+
+La commande relit les objets existants, applique
+``normalize_pollutant_payload`` et regroupe les variantes de notation d'un
+même polluant, par exemple ``PM(2.5)`` et ``PM2.5``. Aucun appel LLM n'est
+réalisé.
 
 Usage :
     python -m src.runners.renormalize_pollutant_outputs

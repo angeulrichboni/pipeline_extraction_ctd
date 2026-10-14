@@ -3,11 +3,15 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pipeline-exposition-sante"
-version = "2.0.0"
-description = "Pipeline unifié : normalisation ICD-11, personas et p0, simulation et trajectoire d'exposition, dataset exposition-santé."
+name = "pipeline-extraction-ctd"
+version = "3.0.0"
+description = "Extraction CTD (agents LLM) et mapping des effets sanitaires vers ICD-10 (OMS, release 2019)."
 requires-python = ">=3.11"
-dependencies = ["numpy>=1.26"]
+dependencies = [
+    "pandas>=2.0",
+    "python-dotenv>=1.0",
+    "requests>=2.31",
+]
 
 [tool.setuptools]
 package-dir = {"" = "src"}

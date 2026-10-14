@@ -1,4 +1,0 @@
-pollutant_specific,pollutant_role,evidence_sentence,confidence
-"PM2.5","target","We linked county-specific monitoring data for particles with aerodiameter of < or = 2.5 microm…","0.95"
-"SO2","contextual","We linked county-specific monitoring data for particles with aerodiameter of < or = 10 microm…","0.95"
-"air pollution","source_marker","Our goal was to evaluate the relationship between cause-specific postneonatal infant mortality and…","0.95"

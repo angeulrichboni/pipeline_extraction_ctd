@@ -13,7 +13,7 @@ from pathlib import Path
 
 from src.preprocessing.final_dataset_merge import build_final_dataset
 
-DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed_full"))
+DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed"))
 
 
 def main() -> None:

@@ -8,7 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 
-DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed_full"))
+DATA_ROOT = Path(os.getenv("CTD_DATA_ROOT", "data/processed"))
 
 INPUT_DIR = DATA_ROOT / "agent_outputs" / "final_inspection"
 OUTPUT_DIR = DATA_ROOT / "final_tables"

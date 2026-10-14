@@ -42,11 +42,14 @@ Thumbs.db
 *.tmp
 *.bak
 
-# Pipeline outputs and generated datasets
-outputs/*
-!outputs/.gitkeep
-data/processed/
-data/raw/
+# Generated datasets
+/data/
 
 # Local input extracts; keep canonical small references under config/ or mapping/
 ctd_extraction.csv
+
+# Generated analyses and reports
+figures/
+resultats_*/
+slide_data/
+*.zip
